@@ -1,0 +1,18 @@
+{{template "base" .}}
+
+{{define "title"}}
+    Payment Succeeded
+{{end}}
+
+{{define "content"}}
+<h2>Payment Succeeded</h2>
+<hr>
+<p>Payment Intent: {{index .Data "pi"}}</p>
+<p>Payment Method: {{index .Data "pm"}}</p>
+<p>Payment Amount: {{index .Data "pa"}}</p>
+<p>Payment Currency: {{index .Data "pc"}}</p>
+<p>Cardholder Name: {{index .Data "cardholder"}}</p>
+<p>Cardholder Email: {{index .Data "cardholder-email"}}</p>
+
+<p>Thank you for your payment!</p>
+{{end}}

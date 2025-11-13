@@ -1,0 +1,12 @@
+create_table("macs") {
+    t.Column("id", "integer", {primary: true})
+    t.Column("name", "string", {"default": ""})
+    t.Column("description", "text", {})
+    t.Column("inventory_level", "integer", {})
+    t.Column("price", "integer", {})
+}
+
+sql("alter table macs modify column created_at datetime default CURRENT_TIMESTAMP;")
+sql("alter table macs modify column updated_at datetime default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;")
+
+sql("insert into macs (name, description, inventory_level, price, created_at, updated_at) values ('MacBook Pro', 'This is a MacBook Pro', 10, 100000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);")

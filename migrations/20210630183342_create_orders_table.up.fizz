@@ -1,0 +1,21 @@
+create_table("orders") {
+    t.Column("id", "integer", {primary: true})
+    t.Column("mac_id", "integer", {"unsigned":true})
+    t.Column("transaction_id", "integer", {"unsigned":true})
+    t.Column("status_id", "integer", {"unsigned":true})
+    t.Column("quantity", "integer", {})
+    t.Column("amount", "integer", {})
+}
+
+sql("alter table orders modify column created_at datetime default CURRENT_TIMESTAMP;")
+sql("alter table orders modify column updated_at datetime default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;")
+
+add_foreign_key("orders", "mac_id", {"macs": ["id"]}, {
+    "on_delete": "cascade",
+    "on_update": "cascade",
+})
+
+add_foreign_key("orders", "transaction_id", {"transactions": ["id"]}, {
+    "on_delete": "cascade",
+    "on_update": "cascade",
+})

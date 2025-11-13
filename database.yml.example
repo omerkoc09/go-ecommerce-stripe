@@ -1,0 +1,8 @@
+development:
+  dialect: mysql
+  database: go_stripe
+  user: your_username
+  password: your_password
+  host: 127.0.0.1
+  pool: 5
+

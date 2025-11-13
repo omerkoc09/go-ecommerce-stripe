@@ -1,0 +1,75 @@
+{{template "base" .}}
+
+{{define "title"}}
+    Buy Once
+{{end}}
+
+{{define "content"}}
+{{$mac := index .Data "mac"}}
+
+<h2 class="text-center mt-5">Buy A MacBook</h2>
+<hr>
+<div class="alert alert-danger text-center d-none" id="card-messages" role="alert"></div>
+
+<form action="/payment-succeeded" method="post"
+    name="charge-form" id="charge-form"
+    class= "d-block needs-validation charge-form"
+    autocomplete="off" novalidate="">
+
+    <input type="hidden" name="product_id" value="{{$mac.ID}}">
+    <input type="hidden" name="product_name" value="{{$mac.Name}}">
+    <input type="hidden" name="amount" id="amount" value="{{$mac.Price}}">
+
+  <h3 class="text-center mb-3">{{$mac.Name}}: {{formatCurrency $mac.Price}}</h3>
+  <p class="text-center mb-3">{{$mac.Description}}</p>
+
+
+  <!--   <div class="mb-3"> 
+        <label for="amount" class="form-label">Amount</label>
+        <input type="text" class="form-control" id="amount" name="amount" autocomplete="amount-new" required>
+    </div> -->
+
+    <div class="mb-3">
+        <label for="cardholder-name" class="form-label">Cardholder Name</label>
+        <input type="text" class="form-control" id="cardholder-name" name="cardholder-name" autocomplete="cardholder-name-new" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="cardholder-email" class="form-label">Cardholder Email</label>
+        <input type="email" class="form-control" id="cardholder-email" name="cardholder-email" autocomplete="email-new" required>
+    </div>
+
+    <!-- card number will be built by stripe -->
+
+    <div class="mb-3">
+        <label class="form-label">Credit Card</label>
+        <div id="card-element" class="form-control" role="group" aria-required="true" aria-label="Credit Card"></div>
+        <div class="alert-danger text-center" id="card-errors" role="alert"></div>
+        <div class="alert-success text-center" id="card-success" role="alert"></div>
+        </div>
+
+        <hr>
+        <a id="pay-button" href="javascript:void(0)" class="btn btn-primary" onclick="val()">Pay</a>
+        <div id="processing-payment" class="text-center d-none">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <input type="hidden" name="payment_intent" id="payment_intent">
+        <input type="hidden" name="payment_method" id="payment_method">
+        <input type="hidden" name="payment_amount" id="payment_amount">
+        <input type="hidden" name="payment_currency" id="payment_currency">
+
+        
+
+</form>
+
+<img src="/static/mac.png" alt="Mac" class="img-fluid rounded mx-auto d-block">
+
+
+{{end}}
+
+{{define "js"}}
+{{template "stripe-js" .}}
+{{end}}

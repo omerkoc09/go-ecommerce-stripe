@@ -1,0 +1,41 @@
+# Binaries
+dist/
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database configuration
+database.yml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Go specific
+go.work
+go.work.sum
+
+# Build artifacts
+tmp/
+*.a
+
+# Logs
+*.log
+
+# Air (live reload)
+tmp/
+
