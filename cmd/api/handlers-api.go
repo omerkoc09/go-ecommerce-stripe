@@ -9,7 +9,7 @@ import (
 	"strconv"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/omerkoc09/go-stripe/internal/cards"
+	"github.com/omerkoc09/go-ecommerce-stripe/internal/cards"
 )
 
 type stripePayload struct {

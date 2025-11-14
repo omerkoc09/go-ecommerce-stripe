@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/omerkoc09/go-stripe/internal/driver"
-	"github.com/omerkoc09/go-stripe/models"
+	"github.com/omerkoc09/go-ecommerce-stripe/internal/driver"
+	"github.com/omerkoc09/go-ecommerce-stripe/models"
 )
 
 const version = "1.0.0"
