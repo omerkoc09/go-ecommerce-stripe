@@ -1,0 +1,16 @@
+create_table("customers") {
+    t.Column("id", "integer", {primary:true})
+    t.Column("first_name", "string", {"size":255})
+    t.Column("last_name", "string", {"size":255})
+    t.Column("email", "string", {})
+
+  sql("alter table transaction_statuses modify column created_at datetime default CURRENT_TIMESTAMP;")
+sql("alter table transaction_statuses modify column updated_at datetime default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP;")
+
+
+
+
+
+
+
+}
